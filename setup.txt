@@ -1,0 +1,234 @@
+# Hand Gesture Spotify Controller
+
+Raspberry Pi Setup Guide
+
+This project lets you control Spotify using hand gestures with a USB webcam on Raspberry Pi 4.
+
+This system is tested and works with:
+
+• Raspberry Pi 4
+• Raspberry Pi OS
+• Python 3.11
+• MediaPipe 0.10.9
+• OpenCV
+• PyAutoGUI
+
+Do not use Python 3.12 or 3.13. MediaPipe will not work.
+if `pip3` is not working in the command line use `pip` only.
+
+---
+
+## 1. Install Raspberry Pi OS
+
+1. Download Raspberry Pi Imager from
+   [https://www.raspberrypi.com/software](https://www.raspberrypi.com/software)
+
+2. Insert SD card into your computer
+
+3. Open Raspberry Pi Imager
+
+4. Choose Raspberry Pi OS (32-bit recommended)
+
+5. Select your SD card
+
+6. Click Write
+
+7. Insert SD card into Raspberry Pi and boot
+
+Connect:
+
+* HDMI monitor
+* USB keyboard
+* USB mouse
+* Internet (Wi-Fi or Ethernet)
+
+---
+
+## 2. Open Terminal
+
+On Raspberry Pi desktop, click the Terminal icon
+or press Ctrl + Alt + T
+
+---
+
+## 3. Update the System
+
+```
+sudo apt update
+sudo apt upgrade -y
+```
+
+---
+
+## 4. Install Python 3.11
+
+Check current version:
+
+```
+python3 --version
+```
+
+If it is not 3.11, install Python 3.11:
+
+```
+sudo apt install python3.11 python3.11-venv python3-pip -y
+```
+
+Make Python 3.11 default:
+
+```
+sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.11 1
+```
+
+Verify:
+
+```
+python3 --version
+```
+
+It should show Python 3.11.x
+
+---
+
+## 5. Create Project Folder
+
+```
+mkdir ~/gesture-spotify
+cd ~/gesture-spotify
+```
+
+---
+
+## 6. Copy Project Files
+
+Put these files inside the folder:
+
+* gesture_controller.py
+* requirements.txt
+* diagnostic_check.py
+
+They should be located in:
+
+```
+/home/pi/gesture-spotify
+```
+
+---
+
+## 7. Install Python Libraries
+
+Install the exact working versions:
+
+```
+pip3 install opencv-python numpy pyautogui
+pip3 install mediapipe==0.10.9
+```
+
+Or use:
+
+```
+pip3 install -r requirements.txt
+```
+
+---
+
+## 8. Plug in Webcam
+
+Connect your USB webcam to the Raspberry Pi.
+
+Check if it is detected:
+
+```
+ls /dev/video*
+```
+
+You should see `/dev/video0`
+
+---
+
+## 9. Test Everything
+
+Run:
+
+```
+python3 diagnostic_check.py
+```
+
+All items should show OK.
+
+---
+
+## 10. Install Spotify (you can download the latest version or get the apk file)
+
+```
+curl -sS https://download.spotify.com/debian/pubkey_6224F9941A8AA6D1.gpg | sudo gpg --dearmor --yes -o /etc/apt/trusted.gpg.d/spotify.gpg
+echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
+sudo apt update
+sudo apt install spotify-client -y
+```
+
+Open Spotify from the menu.
+Log in to your account.
+Start playing any song.
+
+---
+
+## 11. Run the Gesture Controller
+
+```
+cd ~/gesture-spotify
+python3 gesture_controller.py
+```
+
+A camera window will open.
+
+Make sure Spotify is open and playing.
+
+---
+
+## 12. Gesture Controls
+
+| Fingers | Action         |
+| ------- | -------------- |
+| 0 (closed hand)       | Play or Pause  |
+| 1       | Play or Pause  |
+| 2       | Next Track     |
+| 3       | Previous Track |
+| 4       | Volume Up      |
+| 5       | Volume Down    |
+
+Hold your hand steady for about 1 second.
+
+---
+
+## 13. Important Notes
+
+• Spotify must be open and playing
+• The Spotify window should be active
+• Use good lighting
+• Only one hand should be visible
+• Keep hand about 30 to 60 cm from camera
+
+---
+
+## 14. To Stop
+
+Press Q in the camera window
+or press Ctrl + C in terminal
+
+---
+
+## 15. If Something Breaks
+
+Run
+
+```
+python3 diagnostic_check.py
+```
+
+It will tell you:
+
+* If MediaPipe is broken
+* If OpenCV is missing
+* If the camera is not detected
+
