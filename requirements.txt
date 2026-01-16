@@ -1,0 +1,23 @@
+# Core dependencies for Hand Gesture Spotify Controller
+# Compatible with Python 3.11
+
+# Computer vision and image processing
+opencv-python>=4.5.0
+
+# Hand landmark detection
+mediapipe>=0.10.9
+
+# Keyboard automation for media controls
+pyautogui>=0.9.50
+
+# Numerical operations (required by MediaPipe)
+numpy>=1.21.0
+
+# Additional dependencies for specific platforms:
+# 
+# For Raspberry Pi, also install system packages:
+# sudo apt-get install python3-opencv libatlas-base-dev
+#
+# For Windows, you may need:
+# Microsoft Visual C++ 14.0 or greater
+# https://aka.ms/vs/17/release/vc_redist.x64.exe
