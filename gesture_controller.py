@@ -1,5 +1,14 @@
 """
-Note: Guys, I have used AI for commenting just so you know what these code snippets actually do. So when you present this your professor you might actually tell what each part does.
+Real-Time Gesture-Controlled Spotify Media Player
+With Embedded Signal Signal Processing Using
+Raspberry Pi
+
+Author: Pacate, Reyjean    
+        Galvez, John June Yusuke  
+        Bihasa, Nicole
+        Abrugena, Angelo
+
+Note: Guys, We have used AI for commenting just so you know what these code snippets actually do. So when you present this your professor you might actually tell what each part does.
 You can remove these comments. 
 """
 
@@ -332,4 +341,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
