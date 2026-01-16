@@ -1,10 +1,4 @@
 """
-Hand Gesture Controlled Spotify Player for Raspberry Pi 4
-Detects hand gestures via webcam and controls Spotify playback
-
-Author: Mohd Amir
-Date: 2023-08-31
-
 Note: Guys, I have used AI for commenting just so you know what these code snippets actually do. So when you present this your professor you might actually tell what each part does.
 You can remove these comments. 
 """
@@ -338,3 +332,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
